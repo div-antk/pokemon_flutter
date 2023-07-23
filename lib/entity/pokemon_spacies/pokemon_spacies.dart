@@ -8,10 +8,23 @@ class PokemonSpacies with _$PokemonSpacies {
   const factory PokemonSpacies({
     required String name,
     required List<Name> names,
+    List<FlavorTextEntries>? flavor_text_entries,
   }) = _PokemonSpacies;
 
   factory PokemonSpacies.fromJson(Map<String, dynamic> json) =>
       _$PokemonSpaciesFromJson(json);
+}
+
+@freezed
+class FlavorTextEntries with _$FlavorTextEntries {
+  const factory FlavorTextEntries({
+    required String flavor_text,
+    required Language language,
+    required Version version,
+  }) = _FlavorTextEntries;
+
+  factory FlavorTextEntries.fromJson(Map<String, dynamic> json) =>
+      _$FlavorTextEntriesFromJson(json);
 }
 
 @freezed
@@ -31,5 +44,17 @@ class Language with _$Language {
     required String url,
   }) = _Language;
 
-  factory Language.fromJson(Map<String, dynamic> json) => _$LanguageFromJson(json);
+  factory Language.fromJson(Map<String, dynamic> json) =>
+      _$LanguageFromJson(json);
+}
+
+@freezed
+class Version with _$Version {
+  const factory Version({
+    required String name,
+    required String url,
+  }) = _Version;
+
+  factory Version.fromJson(Map<String, dynamic> json) =>
+      _$VersionFromJson(json);
 }

@@ -22,6 +22,8 @@ PokemonSpacies _$PokemonSpaciesFromJson(Map<String, dynamic> json) {
 mixin _$PokemonSpacies {
   String get name => throw _privateConstructorUsedError;
   List<Name> get names => throw _privateConstructorUsedError;
+  List<FlavorTextEntries>? get flavor_text_entries =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +37,10 @@ abstract class $PokemonSpaciesCopyWith<$Res> {
           PokemonSpacies value, $Res Function(PokemonSpacies) then) =
       _$PokemonSpaciesCopyWithImpl<$Res, PokemonSpacies>;
   @useResult
-  $Res call({String name, List<Name> names});
+  $Res call(
+      {String name,
+      List<Name> names,
+      List<FlavorTextEntries>? flavor_text_entries});
 }
 
 /// @nodoc
@@ -53,6 +58,7 @@ class _$PokemonSpaciesCopyWithImpl<$Res, $Val extends PokemonSpacies>
   $Res call({
     Object? name = null,
     Object? names = null,
+    Object? flavor_text_entries = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -63,6 +69,10 @@ class _$PokemonSpaciesCopyWithImpl<$Res, $Val extends PokemonSpacies>
           ? _value.names
           : names // ignore: cast_nullable_to_non_nullable
               as List<Name>,
+      flavor_text_entries: freezed == flavor_text_entries
+          ? _value.flavor_text_entries
+          : flavor_text_entries // ignore: cast_nullable_to_non_nullable
+              as List<FlavorTextEntries>?,
     ) as $Val);
   }
 }
@@ -75,7 +85,10 @@ abstract class _$$_PokemonSpaciesCopyWith<$Res>
       __$$_PokemonSpaciesCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<Name> names});
+  $Res call(
+      {String name,
+      List<Name> names,
+      List<FlavorTextEntries>? flavor_text_entries});
 }
 
 /// @nodoc
@@ -91,6 +104,7 @@ class __$$_PokemonSpaciesCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? names = null,
+    Object? flavor_text_entries = freezed,
   }) {
     return _then(_$_PokemonSpacies(
       name: null == name
@@ -101,6 +115,10 @@ class __$$_PokemonSpaciesCopyWithImpl<$Res>
           ? _value._names
           : names // ignore: cast_nullable_to_non_nullable
               as List<Name>,
+      flavor_text_entries: freezed == flavor_text_entries
+          ? _value._flavor_text_entries
+          : flavor_text_entries // ignore: cast_nullable_to_non_nullable
+              as List<FlavorTextEntries>?,
     ));
   }
 }
@@ -108,8 +126,12 @@ class __$$_PokemonSpaciesCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_PokemonSpacies implements _PokemonSpacies {
-  const _$_PokemonSpacies({required this.name, required final List<Name> names})
-      : _names = names;
+  const _$_PokemonSpacies(
+      {required this.name,
+      required final List<Name> names,
+      final List<FlavorTextEntries>? flavor_text_entries})
+      : _names = names,
+        _flavor_text_entries = flavor_text_entries;
 
   factory _$_PokemonSpacies.fromJson(Map<String, dynamic> json) =>
       _$$_PokemonSpaciesFromJson(json);
@@ -124,9 +146,20 @@ class _$_PokemonSpacies implements _PokemonSpacies {
     return EqualUnmodifiableListView(_names);
   }
 
+  final List<FlavorTextEntries>? _flavor_text_entries;
+  @override
+  List<FlavorTextEntries>? get flavor_text_entries {
+    final value = _flavor_text_entries;
+    if (value == null) return null;
+    if (_flavor_text_entries is EqualUnmodifiableListView)
+      return _flavor_text_entries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'PokemonSpacies(name: $name, names: $names)';
+    return 'PokemonSpacies(name: $name, names: $names, flavor_text_entries: $flavor_text_entries)';
   }
 
   @override
@@ -135,13 +168,18 @@ class _$_PokemonSpacies implements _PokemonSpacies {
         (other.runtimeType == runtimeType &&
             other is _$_PokemonSpacies &&
             (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality().equals(other._names, _names));
+            const DeepCollectionEquality().equals(other._names, _names) &&
+            const DeepCollectionEquality()
+                .equals(other._flavor_text_entries, _flavor_text_entries));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_names));
+      runtimeType,
+      name,
+      const DeepCollectionEquality().hash(_names),
+      const DeepCollectionEquality().hash(_flavor_text_entries));
 
   @JsonKey(ignore: true)
   @override
@@ -160,7 +198,8 @@ class _$_PokemonSpacies implements _PokemonSpacies {
 abstract class _PokemonSpacies implements PokemonSpacies {
   const factory _PokemonSpacies(
       {required final String name,
-      required final List<Name> names}) = _$_PokemonSpacies;
+      required final List<Name> names,
+      final List<FlavorTextEntries>? flavor_text_entries}) = _$_PokemonSpacies;
 
   factory _PokemonSpacies.fromJson(Map<String, dynamic> json) =
       _$_PokemonSpacies.fromJson;
@@ -170,8 +209,211 @@ abstract class _PokemonSpacies implements PokemonSpacies {
   @override
   List<Name> get names;
   @override
+  List<FlavorTextEntries>? get flavor_text_entries;
+  @override
   @JsonKey(ignore: true)
   _$$_PokemonSpaciesCopyWith<_$_PokemonSpacies> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+FlavorTextEntries _$FlavorTextEntriesFromJson(Map<String, dynamic> json) {
+  return _FlavorTextEntries.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlavorTextEntries {
+  String get flavor_text => throw _privateConstructorUsedError;
+  Language get language => throw _privateConstructorUsedError;
+  Version get version => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FlavorTextEntriesCopyWith<FlavorTextEntries> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FlavorTextEntriesCopyWith<$Res> {
+  factory $FlavorTextEntriesCopyWith(
+          FlavorTextEntries value, $Res Function(FlavorTextEntries) then) =
+      _$FlavorTextEntriesCopyWithImpl<$Res, FlavorTextEntries>;
+  @useResult
+  $Res call({String flavor_text, Language language, Version version});
+
+  $LanguageCopyWith<$Res> get language;
+  $VersionCopyWith<$Res> get version;
+}
+
+/// @nodoc
+class _$FlavorTextEntriesCopyWithImpl<$Res, $Val extends FlavorTextEntries>
+    implements $FlavorTextEntriesCopyWith<$Res> {
+  _$FlavorTextEntriesCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? flavor_text = null,
+    Object? language = null,
+    Object? version = null,
+  }) {
+    return _then(_value.copyWith(
+      flavor_text: null == flavor_text
+          ? _value.flavor_text
+          : flavor_text // ignore: cast_nullable_to_non_nullable
+              as String,
+      language: null == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as Language,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as Version,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LanguageCopyWith<$Res> get language {
+    return $LanguageCopyWith<$Res>(_value.language, (value) {
+      return _then(_value.copyWith(language: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $VersionCopyWith<$Res> get version {
+    return $VersionCopyWith<$Res>(_value.version, (value) {
+      return _then(_value.copyWith(version: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_FlavorTextEntriesCopyWith<$Res>
+    implements $FlavorTextEntriesCopyWith<$Res> {
+  factory _$$_FlavorTextEntriesCopyWith(_$_FlavorTextEntries value,
+          $Res Function(_$_FlavorTextEntries) then) =
+      __$$_FlavorTextEntriesCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String flavor_text, Language language, Version version});
+
+  @override
+  $LanguageCopyWith<$Res> get language;
+  @override
+  $VersionCopyWith<$Res> get version;
+}
+
+/// @nodoc
+class __$$_FlavorTextEntriesCopyWithImpl<$Res>
+    extends _$FlavorTextEntriesCopyWithImpl<$Res, _$_FlavorTextEntries>
+    implements _$$_FlavorTextEntriesCopyWith<$Res> {
+  __$$_FlavorTextEntriesCopyWithImpl(
+      _$_FlavorTextEntries _value, $Res Function(_$_FlavorTextEntries) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? flavor_text = null,
+    Object? language = null,
+    Object? version = null,
+  }) {
+    return _then(_$_FlavorTextEntries(
+      flavor_text: null == flavor_text
+          ? _value.flavor_text
+          : flavor_text // ignore: cast_nullable_to_non_nullable
+              as String,
+      language: null == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as Language,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as Version,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_FlavorTextEntries implements _FlavorTextEntries {
+  const _$_FlavorTextEntries(
+      {required this.flavor_text,
+      required this.language,
+      required this.version});
+
+  factory _$_FlavorTextEntries.fromJson(Map<String, dynamic> json) =>
+      _$$_FlavorTextEntriesFromJson(json);
+
+  @override
+  final String flavor_text;
+  @override
+  final Language language;
+  @override
+  final Version version;
+
+  @override
+  String toString() {
+    return 'FlavorTextEntries(flavor_text: $flavor_text, language: $language, version: $version)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlavorTextEntries &&
+            (identical(other.flavor_text, flavor_text) ||
+                other.flavor_text == flavor_text) &&
+            (identical(other.language, language) ||
+                other.language == language) &&
+            (identical(other.version, version) || other.version == version));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, flavor_text, language, version);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FlavorTextEntriesCopyWith<_$_FlavorTextEntries> get copyWith =>
+      __$$_FlavorTextEntriesCopyWithImpl<_$_FlavorTextEntries>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FlavorTextEntriesToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FlavorTextEntries implements FlavorTextEntries {
+  const factory _FlavorTextEntries(
+      {required final String flavor_text,
+      required final Language language,
+      required final Version version}) = _$_FlavorTextEntries;
+
+  factory _FlavorTextEntries.fromJson(Map<String, dynamic> json) =
+      _$_FlavorTextEntries.fromJson;
+
+  @override
+  String get flavor_text;
+  @override
+  Language get language;
+  @override
+  Version get version;
+  @override
+  @JsonKey(ignore: true)
+  _$$_FlavorTextEntriesCopyWith<_$_FlavorTextEntries> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -480,5 +722,153 @@ abstract class _Language implements Language {
   @override
   @JsonKey(ignore: true)
   _$$_LanguageCopyWith<_$_Language> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Version _$VersionFromJson(Map<String, dynamic> json) {
+  return _Version.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Version {
+  String get name => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $VersionCopyWith<Version> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VersionCopyWith<$Res> {
+  factory $VersionCopyWith(Version value, $Res Function(Version) then) =
+      _$VersionCopyWithImpl<$Res, Version>;
+  @useResult
+  $Res call({String name, String url});
+}
+
+/// @nodoc
+class _$VersionCopyWithImpl<$Res, $Val extends Version>
+    implements $VersionCopyWith<$Res> {
+  _$VersionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? url = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_VersionCopyWith<$Res> implements $VersionCopyWith<$Res> {
+  factory _$$_VersionCopyWith(
+          _$_Version value, $Res Function(_$_Version) then) =
+      __$$_VersionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, String url});
+}
+
+/// @nodoc
+class __$$_VersionCopyWithImpl<$Res>
+    extends _$VersionCopyWithImpl<$Res, _$_Version>
+    implements _$$_VersionCopyWith<$Res> {
+  __$$_VersionCopyWithImpl(_$_Version _value, $Res Function(_$_Version) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? url = null,
+  }) {
+    return _then(_$_Version(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Version implements _Version {
+  const _$_Version({required this.name, required this.url});
+
+  factory _$_Version.fromJson(Map<String, dynamic> json) =>
+      _$$_VersionFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final String url;
+
+  @override
+  String toString() {
+    return 'Version(name: $name, url: $url)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Version &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.url, url) || other.url == url));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, url);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_VersionCopyWith<_$_Version> get copyWith =>
+      __$$_VersionCopyWithImpl<_$_Version>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_VersionToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Version implements Version {
+  const factory _Version(
+      {required final String name, required final String url}) = _$_Version;
+
+  factory _Version.fromJson(Map<String, dynamic> json) = _$_Version.fromJson;
+
+  @override
+  String get name;
+  @override
+  String get url;
+  @override
+  @JsonKey(ignore: true)
+  _$$_VersionCopyWith<_$_Version> get copyWith =>
       throw _privateConstructorUsedError;
 }
