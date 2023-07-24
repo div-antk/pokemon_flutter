@@ -24,6 +24,7 @@ mixin _$PokemonDetail {
   String get name => throw _privateConstructorUsedError;
   int get order => throw _privateConstructorUsedError;
   Sprites get sprites => throw _privateConstructorUsedError;
+  String? get flavorText => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,8 @@ abstract class $PokemonDetailCopyWith<$Res> {
           PokemonDetail value, $Res Function(PokemonDetail) then) =
       _$PokemonDetailCopyWithImpl<$Res, PokemonDetail>;
   @useResult
-  $Res call({int id, String name, int order, Sprites sprites});
+  $Res call(
+      {int id, String name, int order, Sprites sprites, String? flavorText});
 
   $SpritesCopyWith<$Res> get sprites;
 }
@@ -59,6 +61,7 @@ class _$PokemonDetailCopyWithImpl<$Res, $Val extends PokemonDetail>
     Object? name = null,
     Object? order = null,
     Object? sprites = null,
+    Object? flavorText = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -77,6 +80,10 @@ class _$PokemonDetailCopyWithImpl<$Res, $Val extends PokemonDetail>
           ? _value.sprites
           : sprites // ignore: cast_nullable_to_non_nullable
               as Sprites,
+      flavorText: freezed == flavorText
+          ? _value.flavorText
+          : flavorText // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -97,7 +104,8 @@ abstract class _$$_PokemonDetailCopyWith<$Res>
       __$$_PokemonDetailCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, int order, Sprites sprites});
+  $Res call(
+      {int id, String name, int order, Sprites sprites, String? flavorText});
 
   @override
   $SpritesCopyWith<$Res> get sprites;
@@ -118,6 +126,7 @@ class __$$_PokemonDetailCopyWithImpl<$Res>
     Object? name = null,
     Object? order = null,
     Object? sprites = null,
+    Object? flavorText = freezed,
   }) {
     return _then(_$_PokemonDetail(
       id: null == id
@@ -136,6 +145,10 @@ class __$$_PokemonDetailCopyWithImpl<$Res>
           ? _value.sprites
           : sprites // ignore: cast_nullable_to_non_nullable
               as Sprites,
+      flavorText: freezed == flavorText
+          ? _value.flavorText
+          : flavorText // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -147,7 +160,8 @@ class _$_PokemonDetail implements _PokemonDetail {
       {required this.id,
       required this.name,
       required this.order,
-      required this.sprites});
+      required this.sprites,
+      this.flavorText});
 
   factory _$_PokemonDetail.fromJson(Map<String, dynamic> json) =>
       _$$_PokemonDetailFromJson(json);
@@ -160,10 +174,12 @@ class _$_PokemonDetail implements _PokemonDetail {
   final int order;
   @override
   final Sprites sprites;
+  @override
+  final String? flavorText;
 
   @override
   String toString() {
-    return 'PokemonDetail(id: $id, name: $name, order: $order, sprites: $sprites)';
+    return 'PokemonDetail(id: $id, name: $name, order: $order, sprites: $sprites, flavorText: $flavorText)';
   }
 
   @override
@@ -174,12 +190,15 @@ class _$_PokemonDetail implements _PokemonDetail {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.order, order) || other.order == order) &&
-            (identical(other.sprites, sprites) || other.sprites == sprites));
+            (identical(other.sprites, sprites) || other.sprites == sprites) &&
+            (identical(other.flavorText, flavorText) ||
+                other.flavorText == flavorText));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, order, sprites);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, order, sprites, flavorText);
 
   @JsonKey(ignore: true)
   @override
@@ -200,7 +219,8 @@ abstract class _PokemonDetail implements PokemonDetail {
       {required final int id,
       required final String name,
       required final int order,
-      required final Sprites sprites}) = _$_PokemonDetail;
+      required final Sprites sprites,
+      final String? flavorText}) = _$_PokemonDetail;
 
   factory _PokemonDetail.fromJson(Map<String, dynamic> json) =
       _$_PokemonDetail.fromJson;
@@ -213,6 +233,8 @@ abstract class _PokemonDetail implements PokemonDetail {
   int get order;
   @override
   Sprites get sprites;
+  @override
+  String? get flavorText;
   @override
   @JsonKey(ignore: true)
   _$$_PokemonDetailCopyWith<_$_PokemonDetail> get copyWith =>

@@ -10,6 +10,7 @@ class PokemonDetail with _$PokemonDetail {
     required String name,
     required int order,
     required Sprites sprites,
+    String? flavorText,
   }) = _PokemonDetail;
 
   factory PokemonDetail.fromJson(Map<String, dynamic> json) =>

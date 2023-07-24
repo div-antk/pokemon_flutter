@@ -12,6 +12,7 @@ _$_PokemonDetail _$$_PokemonDetailFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       order: json['order'] as int,
       sprites: Sprites.fromJson(json['sprites'] as Map<String, dynamic>),
+      flavorText: json['flavorText'] as String?,
     );
 
 Map<String, dynamic> _$$_PokemonDetailToJson(_$_PokemonDetail instance) =>
@@ -20,6 +21,7 @@ Map<String, dynamic> _$$_PokemonDetailToJson(_$_PokemonDetail instance) =>
       'name': instance.name,
       'order': instance.order,
       'sprites': instance.sprites,
+      'flavorText': instance.flavorText,
     };
 
 _$_Sprites _$$_SpritesFromJson(Map<String, dynamic> json) => _$_Sprites(
