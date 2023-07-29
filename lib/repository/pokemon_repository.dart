@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pokemon_flutter/api/api_client.dart';
 import 'package:pokemon_flutter/entity/pokemon/pokemon.dart';
 import 'package:pokemon_flutter/entity/pokemon_detail/pokemon_detail.dart';
+import 'package:pokemon_flutter/entity/pokemon_spacies/pokemon_spacies.dart';
 
 class PokemonRepository {
   final dio = Dio();
@@ -37,5 +38,20 @@ class PokemonRepository {
 
     // あとで修正
     return response;
+  }
+
+  Future<String> fetchJapaneseName(String name) async {
+    final client = RestClient(dio);
+
+    final spacies = await client.fetchPokemonSpacies(name);
+    final jpName = spacies.names
+        .firstWhere(
+          (name) => name.language.name == 'jp-Hrkt',
+          orElse: () =>
+              const Name(language: Language(name: '', url: ''), name: ''),
+        )
+        .name;
+
+    return jpName;
   }
 }
