@@ -46,12 +46,29 @@ class PokemonRepository {
     final spacies = await client.fetchPokemonSpacies(name);
     final jpName = spacies.names
         .firstWhere(
-          (name) => name.language.name == 'jp-Hrkt',
+          (name) => name.language.name == 'ja-Hrkt',
           orElse: () =>
               const Name(language: Language(name: '', url: ''), name: ''),
         )
         .name;
 
     return jpName;
+  }
+
+  Future<String> fetchFlavorText(String name, String versionName) async {
+    final client = RestClient(dio);
+
+    final spacies = await client.fetchPokemonSpacies(name);
+
+    final flavorTextEntry = spacies.flavor_text_entries?.firstWhere(
+      (entry) =>
+          entry.language.name == 'ja-Hrkt' && entry.version.name == versionName,
+      orElse: () => const FlavorTextEntries(
+        flavor_text: '',
+        language: Language(name: '', url: ''),
+        version: Version(name: '', url: ''),
+      ),
+    );
+    return flavorTextEntry!.flavor_text;
   }
 }
