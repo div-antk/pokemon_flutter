@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -70,5 +72,29 @@ class PokemonRepository {
       ),
     );
     return flavorTextEntry!.flavor_text;
+  }
+
+  Future<PokemonList> fetchRamdomItems() async {
+    final client = RestClient(dio);
+    final items = <Pokemon>[];
+
+    for (var i = 0; i < 10; i++) {
+      final randomId = Random().nextInt(151) + 1;
+      final item = await client.fetchPokemonDetail(randomId.toString());
+
+      final pokemon = Pokemon(
+        name: item.name,
+        url: item.sprites.frontDefault ?? '',
+      );
+      items.add(pokemon);
+    }
+
+    final pokemonList = PokemonList(
+      count: items.length,
+      next: '',
+      result: items,
+    );
+
+    return pokemonList;
   }
 }
